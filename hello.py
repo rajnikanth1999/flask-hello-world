@@ -28,6 +28,10 @@ def add():
     db.session.commit()
     return redirect("/")
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
 if __name__ == "__main__":
     db.create_all()
     app.run
